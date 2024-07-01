@@ -14,6 +14,9 @@
     <td align="center">
       <img src="covers/cover4.jpg?raw=true" alt="Template Screenshot" width="200">
     </td>
+    <td align="center">
+      <img src="covers/cover5.jpg?raw=true" alt="Template Screenshot" width="200">
+    </td>
   </tr>
 </table>
 
