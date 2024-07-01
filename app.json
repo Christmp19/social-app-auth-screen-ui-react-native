@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "social-app-auth-screen-ui-react-native",
-    "slug": "social-app-auth-screen-ui-react-native",
+    "name": "social-app",
+    "slug": "social-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
