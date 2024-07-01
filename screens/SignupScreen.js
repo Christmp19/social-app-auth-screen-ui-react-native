@@ -1,6 +1,5 @@
 import {
   View,
-  Image,
   Platform,
   StyleSheet,
   ScrollView,
@@ -13,18 +12,16 @@ import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 import SocialButton from '../components/SocialButton';
 
-const LoginScreen = ({ navigation }) => {
+const SignupScreen = ({ navigation }) => {
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [confirmPassword, setConfirmPassword] = useState();
+  
 
   return (
     <View className='flex-1 justify-center items-center p-7 pt-10'>
-      <Image
-        source={require('../assets/rn-social-logo.png')}
-        style={styles.logo}
-      />
-      <Text style={styles.text}>RN Social App</Text>
+      <Text style={styles.text}>Create an account</Text>
 
       <FormInput
         labelValue={email}
@@ -44,19 +41,36 @@ const LoginScreen = ({ navigation }) => {
         secureTextEntry={true}
       />
 
+      <FormInput
+        labelValue={confirmPassword}
+        onChangeText={(userPassword) => setPassword(userPassword)}
+        placeholderText="Confirm Password"
+        iconType="lock"
+        secureTextEntry={true}
+      />
+
       <FormButton
-        buttonTitle="Sign In"
+        buttonTitle="Sign Up"
         onPress={() => login(email, password)}
       />
 
-      <Pressable
-        style={styles.forgotButton} onPress={() => { }}
-      >
-        <Text style={styles.navButtonText}>Forgot Password?</Text>
-      </Pressable>
+      <View style={styles.textPrivate}>
+        <Text style={styles.color_textPrivate}>
+          By registering, you confirm that you accept our{' '}
+        </Text>
+        <Pressable onPress={() => alert('Terms Clicked!')}>
+          <Text style={[styles.color_textPrivate, { color: '#e88832' }]}>
+            Terms of service
+          </Text>
+        </Pressable>
+        <Text style={styles.color_textPrivate}> and </Text>
+        <Text style={[styles.color_textPrivate, { color: '#e88832' }]}>
+          Privacy Policy
+        </Text>
+      </View>
 
       <SocialButton
-        buttonTitle="Sign In with Facebook"
+        buttonTitle="Sign Up with Facebook"
         btnType="facebook"
         color="#4867aa"
         backgroundColor="#e6eaf4"
@@ -64,7 +78,7 @@ const LoginScreen = ({ navigation }) => {
       />
 
       <SocialButton
-        buttonTitle="Sign In with Google"
+        buttonTitle="Sign Up with Google"
         btnType="google"
         color="#de4d41"
         backgroundColor="#f5e7ea"
@@ -72,31 +86,23 @@ const LoginScreen = ({ navigation }) => {
       />
 
       <Pressable
-        style={styles.forgotButton}
-        onPress={() => navigation.replace('Signup')}>
-        <Text style={styles.navButtonText}>
-          Don't have an acount? Create here
-        </Text>
+        style={styles.navButton}
+        onPress={() => navigation.replace('Login')}>
+        <Text style={styles.navButtonText}>Have an account? Sign In</Text>
       </Pressable>
     </View>
   )
 }
 
-export default LoginScreen
+export default SignupScreen
 
 
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
-    flex: 1,
     alignItems: 'center',
     padding: 20,
     paddingTop: 50
-  },
-  logo: {
-    height: 150,
-    width: 150,
-    resizeMode: 'cover',
   },
   text: {
     fontFamily: 'Kufam-SemiBoldItalic',
@@ -105,15 +111,24 @@ const styles = StyleSheet.create({
     color: '#051d5f',
   },
   navButton: {
-    marginTop: 15,
-  },
-  forgotButton: {
-    marginVertical: 35,
+    marginTop: 20,
   },
   navButtonText: {
     fontSize: 18,
     fontWeight: '500',
     color: '#2e64e5',
     fontFamily: 'Lato-Regular',
+  },
+  textPrivate: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginVertical: 35,
+    justifyContent: 'center',
+  },
+  color_textPrivate: {
+    fontSize: 13,
+    fontWeight: '400',
+    fontFamily: 'Lato-Regular',
+    color: 'grey',
   },
 });

@@ -2,37 +2,37 @@ import { View, Text, Pressable, Image } from 'react-native'
 import React from 'react'
 import Onboarding from 'react-native-onboarding-swiper';
 
-// const Skip = ({ onPress = () => {} }) => {
-//   return (
-//     <Pressable
-//       style={{ marginRight: 20 }}
-//        onPress={onPress}
-//     >
-//       <Text style={{ fontSize: 16 }}>Skip</Text>
-//     </Pressable>
-//   );
-// };
-// const Next = ({ onPress = () => {} }) => {
-//   return (
-//     <Pressable
-//       style={{ marginRight: 20 }}
-//        onPress={onPress}
-//     >
-//       <Text style={{ fontSize: 16 }}>Next</Text>
-//     </Pressable>
-//   );
-// };
+const Skip = ({ onPress = () => {} }) => {
+  return (
+    <Pressable
+      style={{ marginHorizontal: 12 }}
+       onPress={onPress}
+    >
+      <Text style={{ fontSize: 16 }}>Skip</Text>
+    </Pressable>
+  );
+};
+const Next = ({ onPress = () => {} }) => {
+  return (
+    <Pressable
+      style={{ marginHorizontal: 12 }}
+       onPress={onPress}
+    >
+      <Text style={{ fontSize: 16 }}>Next</Text>
+    </Pressable>
+  );
+};
 
-const Dots = ({selected}) => {
+const Dots = ({ selected }) => {
   let backgroundColor;
-  backgroundColor = selected ? 'white' : 'gray';
+  backgroundColor = selected ? 'rgba(0, 0, 0, 0.8)' : 'rgba(0, 0, 0, 0.3)';
 
   return (
     <View
       style={{
         backgroundColor,
-        width: 5,
-        height: 5,
+        width: 6,
+        height: 6,
         marginHorizontal: 3,
       }}
     >
@@ -41,13 +41,13 @@ const Dots = ({selected}) => {
   )
 }
 
-const Done = ({ onPress = () => {} }) => {
+const Done = ({ onPress = () => { } }) => {
   return (
     <Pressable
-      style={{ marginRight: 8 }} 
-       onPress={onPress}
+      style={{ marginHorizontal: 12 }}
+      onPress={onPress}
     >
-      <Text style={{ fontSize: 16, color: 'white' }}>Done</Text>
+      <Text style={{ fontSize: 16 }}>Done</Text>
     </Pressable>
   );
 };
@@ -56,38 +56,32 @@ const Done = ({ onPress = () => {} }) => {
 const OnboardingScreen = ({ navigation }) => {
   return (
     <Onboarding
-      // SkipButtonComponent={Skip}
-      // NextButtonComponent={Next}
+      SkipButtonComponent={Skip}
+      NextButtonComponent={Next}
       DotComponent={Dots}
       DoneButtonComponent={Done}
       onSkip={() => navigation.replace('Login')}
       onDone={() => navigation.replace('Login')}
       pages={[
         {
-          backgroundColor: 'blue',
-          image: <Image source={require('../assets/img1.png')}  className="w-80 h-80" />,
-          title: 'Gestion des données',
-          subtitle: 'Done with React Native Onboarding Swiper',
+          backgroundColor: '#a6e4d0',
+          image: <Image source={require('../assets/onboarding-img1.png')} />,
+          title: 'Connect to the World',
+          subtitle: 'A New Way To Connect With The World',
         },
         {
-          backgroundColor: 'orange',
-          image: <Image source={require('../assets/img2.png')}  className="w-80 h-80" />,
-          title: 'Site web responsive',
-          subtitle: 'Done with React Native Onboarding Swiper',
+          backgroundColor: '#fdeb93',
+          image: <Image source={require('../assets/onboarding-img2.png')} />,
+          title: 'Share Your Favorites',
+          subtitle: 'Share Your Thoughts With Similar Kind of People',
         },
         {
-          backgroundColor: 'purple',
-          image: <Image source={require('../assets/img4.png')}  className="w-80 h-80" />,
-          title: 'Gestion réseau social',
-          subtitle: 'Done with React Native Onboarding Swiper',
+          backgroundColor: '#e9bcbe',
+          image: <Image source={require('../assets/onboarding-img3.png')} />,
+          title: 'Become The Star',
+          subtitle: "Let The Spot Light Capture You",
         },
-        {
-          backgroundColor: 'red',
-          image: <Image source={require('../assets/img5.png')}  className="w-80 h-80" />,
-          title: 'Maintenance du site',
-          subtitle: 'Done with React Native Onboarding Swiper',
-        },
-  ]}
+      ]}
     />
   )
 }
